@@ -5,52 +5,52 @@ import pandas as pd
 from common import get_graphql_data, write_text, write_ranking_repo
 import inspect
 
-# languages = ['Python']  # For test
-# languages_md = ['Python']  # For test
-# table_of_contents = """
-# * [Python](#python)"""  # For test
-languages = ["ActionScript", "C", "CSharp", "CPP", "Clojure", "CoffeeScript", "CSS", "Dart", "DM", "Elixir", "Go", "Groovy", "Haskell", "HTML", "Java",
-             "JavaScript", "Julia", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell",
-             "Swift", "TeX", "TypeScript", "Vim-script"]
-# Escape characters in markdown like # + - etc
-languages_md = ["ActionScript", "C", "C\#", "C\+\+", "Clojure", "CoffeeScript", "CSS", "Dart", "DM", "Elixir", "Go", "Groovy", "Haskell", "HTML", "Java",
-                "JavaScript", "Julia", "Kotlin", "Lua", "MATLAB", "Objective\-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell",
-                "Swift", "TeX", "TypeScript", "Vim script"]
+languages = ['CPP']  # For test
+languages_md = ['C\+\+']  # For test
 table_of_contents = """
-* [ActionScript](#actionscript)
-* [C](#c)
-* [C\#](#c-1)
-* [C\+\+](#c-2)
-* [Clojure](#clojure)
-* [CoffeeScript](#coffeescript)
-* [CSS](#css)
-* [Dart](#dart)
-* [DM](#dm)
-* [Elixir](#elixir)
-* [Go](#go)
-* [Groovy](#groovy)
-* [Haskell](#haskell)
-* [HTML](#html)
-* [Java](#java)
-* [JavaScript](#javascript)
-* [Julia](#julia)
-* [Kotlin](#kotlin)
-* [Lua](#lua)
-* [MATLAB](#matlab)
-* [Objective\-C](#objective-c)
-* [Perl](#perl)
-* [PHP](#php)
-* [PowerShell](#powershell)
-* [Python](#python)
-* [R](#r)
-* [Ruby](#ruby)
-* [Rust](#rust)
-* [Scala](#scala)
-* [Shell](#shell)
-* [Swift](#swift)
-* [TeX](#tex)
-* [TypeScript](#typeScript)
-* [Vim script](#vim-script)"""
+* [C\+\+](#c-2)"""  # For test
+# languages = ["ActionScript", "C", "CSharp", "CPP", "Clojure", "CoffeeScript", "CSS", "Dart", "DM", "Elixir", "Go", "Groovy", "Haskell", "HTML", "Java",
+#              "JavaScript", "Julia", "Kotlin", "Lua", "MATLAB", "Objective-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell",
+#              "Swift", "TeX", "TypeScript", "Vim-script"]
+# # Escape characters in markdown like # + - etc
+# languages_md = ["ActionScript", "C", "C\#", "C\+\+", "Clojure", "CoffeeScript", "CSS", "Dart", "DM", "Elixir", "Go", "Groovy", "Haskell", "HTML", "Java",
+#                 "JavaScript", "Julia", "Kotlin", "Lua", "MATLAB", "Objective\-C", "Perl", "PHP", "PowerShell", "Python", "R", "Ruby", "Rust", "Scala", "Shell",
+#                 "Swift", "TeX", "TypeScript", "Vim script"]
+# table_of_contents = """
+# * [ActionScript](#actionscript)
+# * [C](#c)
+# * [C\#](#c-1)
+# * [C\+\+](#c-2)
+# * [Clojure](#clojure)
+# * [CoffeeScript](#coffeescript)
+# * [CSS](#css)
+# * [Dart](#dart)
+# * [DM](#dm)
+# * [Elixir](#elixir)
+# * [Go](#go)
+# * [Groovy](#groovy)
+# * [Haskell](#haskell)
+# * [HTML](#html)
+# * [Java](#java)
+# * [JavaScript](#javascript)
+# * [Julia](#julia)
+# * [Kotlin](#kotlin)
+# * [Lua](#lua)
+# * [MATLAB](#matlab)
+# * [Objective\-C](#objective-c)
+# * [Perl](#perl)
+# * [PHP](#php)
+# * [PowerShell](#powershell)
+# * [Python](#python)
+# * [R](#r)
+# * [Ruby](#ruby)
+# * [Rust](#rust)
+# * [Scala](#scala)
+# * [Shell](#shell)
+# * [Swift](#swift)
+# * [TeX](#tex)
+# * [TypeScript](#typeScript)
+# * [Vim script](#vim-script)"""
 
 
 class ProcessorGQL(object):
@@ -94,7 +94,7 @@ class ProcessorGQL(object):
         }
         """
         self.bulk_size = 50
-        self.bulk_count = 2
+        self.bulk_count = 20
         self.gql_stars = self.gql_format % ("stars:>1000 sort:stars", self.bulk_size, "%s")
         self.gql_forks = self.gql_format % ("forks:>1000 sort:forks", self.bulk_size, "%s")
         self.gql_stars_lang = self.gql_format % ("language:%s stars:>0 sort:stars", self.bulk_size, "%s")
